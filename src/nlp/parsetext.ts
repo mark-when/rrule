@@ -459,7 +459,7 @@ export default function parseText(text: string, language: Language = ENGLISH) {
 
   function F() {
     if (ttr.symbol === 'until') {
-      const date = Date.parse(ttr.text)
+      const date = ttr.text.trim() === 'now' ? Date.now() : Date.parse(ttr.text)
 
       if (!date) throw new Error('Cannot parse until date:' + ttr.text)
       options.until = new Date(date)
